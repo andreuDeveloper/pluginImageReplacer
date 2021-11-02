@@ -1,0 +1,44 @@
+{
+  "name": "Image replacer",
+  "version": "1.0",
+  "description": "Change images",
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "http://*/",
+    "https://*/",
+    "contextMenus",
+    "storage"
+  ],
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": true
+  },
+  "browser_action": {
+    "default_title": "Image replacer",
+    "default_popup": "popup.html"
+  },
+  "content_security_policy": "script-src 'self' https://code.jquery.com/jquery-3.3.1.slim.min.js https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js; object-src 'self'",
+  "manifest_version": 2,
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    "img/*"
+  ]
+}
